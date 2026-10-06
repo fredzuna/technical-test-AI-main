@@ -18,7 +18,7 @@ setup:
 
 ## Produce predictions.csv for the blind set. Point this at your own entry point.
 predict:
-	$(PYTHON) solution/baseline.py --queries $(BLIND) --versions data/versions.csv --out predictions.csv
+	$(PYTHON) solution/predict.py --queries $(BLIND) --versions data/versions.csv --out predictions.csv
 
 ## Score yourself on the labeled dev set. Generate dev_predictions.csv first.
 score:
