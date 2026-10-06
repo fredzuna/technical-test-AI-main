@@ -1,0 +1,5 @@
+__pycache__/
+.embed_cache/
+predictions.csv
+dev_predictions.csv
+.venv/

@@ -1,0 +1,6 @@
+# Starting point only. Add whatever you need; we install from this file.
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+rapidfuzz>=3.9
+openai>=1.40
