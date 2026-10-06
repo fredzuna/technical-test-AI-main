@@ -1,33 +1,7 @@
-import re
-import unicodedata
-
 import pandas as pd
 
 from catalog import load_catalog
-
-
-def normalize_text(value: str) -> str:
-    """Normalize text for matching."""
-
-    if not value:
-        return ""
-
-    value = str(value).upper()
-
-    # Remove accents
-    value = unicodedata.normalize("NFKD", value)
-    value = "".join(
-        char for char in value
-        if not unicodedata.combining(char)
-    )
-
-    # Replace punctuation with spaces
-    value = re.sub(r"[^A-Z0-9]+", " ", value)
-
-    # Normalize whitespace
-    value = re.sub(r"\s+", " ", value).strip()
-
-    return value
+from text_utils import normalize_text
 
 
 def tokenize(value: str) -> set[str]:

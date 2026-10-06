@@ -1,21 +1,8 @@
-import re
-import unicodedata
-from vehicle_identity import extract_vehicle_identity
-from text_utils import normalize_text
 import pandas as pd
 
-def tokens(value: str) -> set[str]:
-    return set(normalize_text(value).split())
-
-
-def token_similarity(a: str, b: str) -> float:
-    a_tokens = tokens(a)
-    b_tokens = tokens(b)
-
-    if not a_tokens:
-        return 0.0
-
-    return len(a_tokens & b_tokens) / len(a_tokens)
+from retrieval import text_similarity
+from text_utils import normalize_text
+from vehicle_identity import extract_vehicle_identity
 
 
 def manufacturer_score(query, candidate) -> float:
@@ -105,7 +92,7 @@ def rank_candidates(
     candidates["description_score"] = candidates[
         "descveh"
     ].apply(
-        lambda value: token_similarity(
+        lambda value: text_similarity(
             description,
             value,
         )
